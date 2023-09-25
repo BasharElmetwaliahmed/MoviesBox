@@ -1,6 +1,13 @@
+import { useEffect } from "react"
+import { useDispatch } from "react-redux"
 import CollectionSection from "../Components/Collection/CollectionSection"
 import HomeLanding from "../Components/HomeLanding"
+import { getTrendingAll } from "../Redux/Services/ApiSlice"
 function Home() {
+  const dispatch=useDispatch()
+  useEffect(()=>{
+   dispatch(getTrendingAll())
+  },[])
   return (
     <div>
         <HomeLanding/>
