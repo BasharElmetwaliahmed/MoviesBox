@@ -1,5 +1,7 @@
 export default function extractYearFromDate(dateString) {
   // Split the date string into an array using the "-" delimiter
+  console.log(dateString)
+  if(!dateString) return null
   const dateParts = dateString.split("-");
 
   // Check if the date string has at least one element (the year)

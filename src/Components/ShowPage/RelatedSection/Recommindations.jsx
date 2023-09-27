@@ -1,10 +1,10 @@
 /* eslint-disable react/prop-types */
-import SlideMainComponent from "../../MainSlider/SlideMainComponent"
 import SliderMain from '../../MainSlider/SliderMain'
+import ShowCard from "../../ShowCard.jsx/ShowCard"
 
 function Recommindations({collection,type,title}) {
         const collectionSlide=collection && collection.results.filter(element=>{if(element.poster_path)return element})
-        .map((element)=><SlideMainComponent type={type} id={element.id} key={element.id}/>)    
+        .map((element)=><ShowCard type={type} id={element.id} key={element.id}/>)    
   return (
     <div>
                  {  collection?.results.length  ?
