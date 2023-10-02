@@ -1,7 +1,7 @@
 import  { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Navigate } from 'react-router-dom';
-import SlideMainComponent from '../Components/MainSlider/SlideMainComponent';
+import ShowCard from '../Components/ShowCard.jsx/ShowCard';
 import WatchListChooses from '../Components/WatchList/WatchListChooses';
 
 function WatchList() {
@@ -14,7 +14,7 @@ function WatchList() {
  
   const renderSlideMainComponents = () => {
     return watchListFiltered.map((element) => (
-      <SlideMainComponent type={element.type} id={element.id} key={element.id} />
+      <ShowCard type={element.type} id={element.id} key={element.id} />
     ));
   };
 

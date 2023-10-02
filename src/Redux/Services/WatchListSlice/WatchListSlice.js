@@ -15,8 +15,13 @@ const WatchListSlice=createSlice({
         toastify('WatchList updated Succesfully', 'success');
       })
 
+    },
+    reducers:{
+      setWatchList:(state,action)=>{
+        state.watchList=action.payload
+      }
     }
 
 })
 export const watchListReducer=WatchListSlice.reducer
-export const {addToWatchList,removeFromWatchList}=WatchListSlice.actions
+export const {setWatchList}=WatchListSlice.actions

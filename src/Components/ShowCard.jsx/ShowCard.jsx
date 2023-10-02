@@ -19,10 +19,10 @@ function ShowCard({id,type}) {
    }
 if(!show) return ;
   return (
- <>
+ <div className='flex flex-col'>
   <ShowCardHeader show={show} id={id} type={type} clickHandler={clickHandler}/>
   <ShowContent show={show} type={type}   clickHandler={clickHandler}/>  
-</>
+</div>
   )
 }
 
