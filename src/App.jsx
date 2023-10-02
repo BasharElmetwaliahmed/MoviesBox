@@ -4,18 +4,12 @@ import { Routes, Route, createBrowserRouter, RouterProvider,  } from 'react-rout
 import {getTrendingAll} from './Redux/Services/ApiSlice'
 import Header from './Components/Header';
 import { useState } from 'react';
-import SearchPage from './pages/SearchPage';
 import Home from './pages/Home';
 import MoviesPage from './pages/MoviesPage';
 import TvSeriesPage from './pages/TvSeriesPage';
-import CollectionPage from './pages/CollectionPage';
-import NotFound from './pages/NotFound';
-import WatchList from './pages/WatchList';
-import LoginForm from './pages/LoginForm';
-import { setUser } from './Redux/Services/UserSlice';
+
 import ShowPage ,{loader as showLoader} from './pages/ShowPage';
 import Layout from './Components/Layout/Layout';
-let userExist=localStorage.getItem('user')
 // Add a new document in collection "cities"
 const router=createBrowserRouter([
   {
@@ -29,6 +23,7 @@ const router=createBrowserRouter([
       },
       {
         path:'movies',
+        element:<MoviesPage/>,
         children:[
           {
             path:':showId',
@@ -39,6 +34,7 @@ const router=createBrowserRouter([
       },
       {
         path:'tvseries',
+        element:<TvSeriesPage/>,
         children:[
           {
             path:':showId',

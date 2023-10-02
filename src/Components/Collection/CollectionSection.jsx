@@ -1,45 +1,36 @@
-/* eslint-disable react/jsx-no-undef */
 /* eslint-disable react/prop-types */
-/* eslint-disable no-mixed-spaces-and-tabs */
-import useFetch from '../../hooks/useFetch'
-import seeMoreIcon from '../../assets/imgs/Chevron right.png'
+import  { useState } from 'react';
+import useFetch from '../../hooks/useFetch';
 import ReactLoading from 'react-loading';
 import SliderMain from '../MainSlider/SliderMain';
-import SlideMainComponent from '../MainSlider/SlideMainComponent';
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
-import CategoryBox from './CategoryBox';
+import ShowCard from '../ShowCard.jsx/ShowCard';
+import CollectionHeader from './CollectionHeader';
 
-// show is movie or tv Series
-//type is movie or tv
-
-function CollectionSection({title,categories,data}) {
-    const [category,setCategory]=useState({position:'left',type:categories[0].category})
-    const {collection,isLoading}=useFetch(`https://api.themoviedb.org/3/${category.type}/${data}`)
-    const slides=collection &&collection.results.map((element,id)=>{
-    if(element.poster_path) return <SlideMainComponent type={category.type} id={element.id} key={id}/>
-    }
-    )
-
-    const navigate=useNavigate()
-    const conditionleft=category.position=='left'
+function CollectionSection({ title, categories, data }) {
+  const initialCategory = categories[0].category;
+  const [category, setCategory] = useState({ position: 'left', type: initialCategory });
+  const { collection, isLoading } = useFetch(`https://api.themoviedb.org/3/${category.type}/${data}`,category);
+  const slides = collection?.results
+    ?.filter((element) => element.poster_path)
+    .map((element, id) => <ShowCard type={category.type} id={element.id} key={id} /> );
   return (
-    <div className='container py-20 px-3'>
-    <div className='flex justify-between items-center mb-14 flex-wrap gap-6'>
-   <h2 className='text-5xl font-semibold capitalize'>{title}</h2>
-  <CategoryBox setCategory={setCategory} conditionleft={conditionleft} categories={categories}/>
-  <button className='flex text-red-700 items-center text-lg' onClick={()=>{navigate(`/${category.type}/${data}`)}}>
-    See More <img src={seeMoreIcon} /></button>
+    <div className="container py-20 px-3">
+      <CollectionHeader
+        setCategory={setCategory}
+        categories={categories}
+        category={category}
+        title={title}
+        data={data}
+      />
+      <div className="min-h-[500px] flex items-center justify-center">
+        {isLoading? (
+          <ReactLoading type="bubbles" color="#ff007f" height={60} width={60} />
+        ) : (
+          <SliderMain slides={slides} />
+        )}
+      </div>
     </div>
-      <div className='min-h-[500px] flex items-center justify-center'>
-    {
-      isLoading?
-      	<ReactLoading type={'bubbles'} color={'#ff007f'} height={60} width={60} />:<SliderMain slides={slides}/> 
-     }
-     </div>      
-
-    </div>
-  )
+  );
 }
 
-export default CollectionSection
+export default CollectionSection;

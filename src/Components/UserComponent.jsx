@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import {  useSelector,useDispatch} from 'react-redux';
-import { signOut } from '../Redux/Services/UserSlice';
+import { signOut } from '../Redux/Services/userSlice/UserSlice';
 
 function UserComponent() {
     const user=useSelector(state=>state.user)

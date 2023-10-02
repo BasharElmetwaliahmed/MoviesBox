@@ -12,7 +12,7 @@ function ShowContent({show,type,clickHandler}) {
             <img src={imdbLogo} alt='imdb logo'/>
             <p>{show.vote_average?show.vote_average:0}/10</p>
           </div>
-          <p className='text-gray-400 text-xs font-bold'>{show.genres.length?show.genres.map(genre=>`${genre.name}, `):''}</p>
+          <p className='text-gray-400 text-xs font-bold'>{show.genres?.length?show.genres.map(genre=>`${genre.name}, `):''}</p>
   </div>
   )
 }

@@ -6,7 +6,7 @@ import { useRef } from 'react'
 import { options } from '../options'
 import Nav from './Nav/Nav'
 import { useDispatch ,useSelector} from 'react-redux';
-import { logIn } from '../Redux/Services/UserSlice'
+import { logIn } from '../Redux/Services/userSlice/UserSlice'
 import UserComponent from './UserComponent'
 import { useEffect } from 'react'
 

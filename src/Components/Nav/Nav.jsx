@@ -6,11 +6,11 @@ function Nav({showNav}) {
     title:'Home'
   },
   {
-    path:'/tv',
+    path:'/tvseries',
     title:'Tv Series'
   },
   {
-    path:'/movie',
+    path:'/movies',
     title:'Movies'
   },
   {

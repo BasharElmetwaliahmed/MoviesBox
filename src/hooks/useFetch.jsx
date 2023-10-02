@@ -2,7 +2,7 @@ import { useState } from 'react'
 import { useEffect } from 'react'
 import { options } from '../options'
 
-function useFetch(url) {
+function useFetch(url,category) {
    const [collection,setCollection]=useState(null)
    const [isLoading,setLoading]=useState(false)
    const fetchData=async()=>{
@@ -14,7 +14,7 @@ function useFetch(url) {
    }
     useEffect(()=>{
         fetchData()
-    },[url])
+    },[url,category])
 
   return {collection,isLoading}
 }
