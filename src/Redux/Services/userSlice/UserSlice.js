@@ -1,25 +1,12 @@
-import { createSlice, createAsyncThunk } from '@reduxjs/toolkit'
-import {  signInWithPopup, GoogleAuthProvider } from "firebase/auth";
-import { auth } from '../../../firebase';
+import { createSlice } from '@reduxjs/toolkit'
+import { signOutAction } from './signOutAction'
+import { signInAction } from './signInAction'
+import toastify from '../../../Components/functions/toast'
 
 
 
 
 
-export const signOut=createAsyncThunk('user/signout',
-  async (_, thunkAPI) => {
-    const { rejectWithValue } = thunkAPI;
- try{
-    // This gives you a Google Access Token. You can use it to access the Google API.
-    const response=await signOut(auth)
-    console.log(response)
- 
- }
-  catch(error) {
-    rejectWithValue(error)
-  }
-})
-  
 
   const userSlice=createSlice({
     name:'user',
@@ -30,7 +17,7 @@ export const signOut=createAsyncThunk('user/signout',
         error:null
     },
         extraReducers:{
-      [logIn.fulfilled]:(state,action)=>{
+      [signInAction.fulfilled]:(state,action)=>{
 
         const data= JSON.parse(action.payload)
          state.user=data.user
@@ -42,15 +29,19 @@ export const signOut=createAsyncThunk('user/signout',
           user:state.user,
           token:state.token
          }))
+         toastify('logged in successfully','success')
       },
        
     
-    [signOut.fulfilled]:(state)=>{
+    [signOutAction.fulfilled]:(state)=>{
         state.user=null;
         state.token=null;
         state.isAuthenticated=false;
         state.error=null;
         localStorage.clear()
+         toastify('logged out successfully','success')
+
+        
     }
     
     },
