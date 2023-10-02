@@ -1,11 +1,13 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { signOut } from 'firebase/auth';
+import { redirect } from 'react-router-dom';
 import { auth } from '../../../firebase';
 
 export const signOutAction = createAsyncThunk('user/signout', async (_, { rejectWithValue }) => {
   try {
-    // This gives you a Google Access Token. You can use it to access the Google API.
-    await signOut(auth);
+    
+   await signOut(auth)
+   return redirect('/')
   } catch (error) {
     return rejectWithValue(error);
   }

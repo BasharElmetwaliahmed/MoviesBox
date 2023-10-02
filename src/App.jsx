@@ -8,10 +8,13 @@ import 'react-toastify/dist/ReactToastify.css';
 
 import ShowPage ,{loader as showLoader} from './pages/ShowPage';
 import Layout from './Components/Layout/Layout';
+import WatchList from './pages/WatchList';
+import { authLoader, checkUserLoader } from './auth/authutil';
 const router=createBrowserRouter([
   {
     path:'/',
     element:<Layout/>,
+    loader:checkUserLoader,
     children:[
       {
         index:true,
@@ -40,6 +43,11 @@ const router=createBrowserRouter([
           }
         ]
       },      
+      {
+        path:'watchlist',
+        element:<WatchList/>,
+        loader:authLoader
+      }
 
     ]
   }
