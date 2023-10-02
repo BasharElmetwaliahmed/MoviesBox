@@ -6,7 +6,7 @@ import imdbLogo from '../../assets/imgs/MV5BMTk3ODA4Mjc0NF5BMl5BcG5nXkFtZTgwNDc1
 import useDetails from '../../hooks/useDetails';
 import { useNavigate } from "react-router-dom";
 import { useDispatch,useSelector } from 'react-redux';
-import { addToWatchList, removeFromWatchList } from '../../Redux/Services/WatchListSlice';
+import { addToWatchList, removeFromWatchList } from '../../Redux/Services/WatchListSlice/WatchListSlice';
 
 // eslint-disable-next-line react/prop-types
 function SlideMainComponent({id,type}) {

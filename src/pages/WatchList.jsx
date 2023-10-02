@@ -10,11 +10,14 @@ function WatchList() {
   const user=useSelector(state=>state.user)
   const [currentType, setCurrentType] = useState('movie');
 
+ 
+ 
   const renderSlideMainComponents = () => {
     return watchListFiltered.map((element) => (
       <SlideMainComponent type={element.type} id={element.id} key={element.id} />
     ));
   };
+
       if(!user.token) return <Navigate to='/' replace={true}/>
   return (
     <div>

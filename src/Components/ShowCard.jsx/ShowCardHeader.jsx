@@ -1,20 +1,23 @@
 /* eslint-disable react/prop-types */
 import { useDispatch, useSelector } from "react-redux"
-import { addToWatchList, removeFromWatchList } from "../../Redux/Services/WatchListSlice"
 import favIcon from '../../assets/imgs/Favorite.png'
 import favIconActive from '../../assets/imgs/Favoriteactive.png'
+import { UpdateWatchList } from "../../Redux/Services/WatchListSlice/WatchListAction"
 
 
 function ShowCardHeader({id,type,show,clickHandler}) {
     const dispatch=useDispatch()
     const watchList =useSelector(state=>state.watchlist).watchList
     const existOnWatchList=watchList && watchList.find(element=>element.id==id)
+    const user=useSelector(state=>state.user).user
     const addToWatchListHandler=()=>{
       if(!existOnWatchList){
-        dispatch(addToWatchList({id:show.id,type:type}))
+        const watchlist=[...watchList,{...show,type}]
+        dispatch(UpdateWatchList({watchlist:watchlist,uid:user.uid}))
       }
       else{
-        dispatch(removeFromWatchList(id))
+        const watchlist=watchList.filter(element=>element.id !==id)
+        dispatch(UpdateWatchList({watchlist:watchlist,uid:user.uid}))
       }
     }
 
