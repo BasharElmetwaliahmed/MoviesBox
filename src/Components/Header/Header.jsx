@@ -5,7 +5,7 @@ import ControlHeader from './ControlHeader'
 import Search from './Search'
 
 
-function Header() {
+function Header({setSearch}) {
     const [showNav,setShowNav]=useState(false)
 
 
@@ -15,7 +15,7 @@ function Header() {
     <div className='relative py-5 px-2 z-10 bg-gray-900 '>
         <div className='container flex justify-between  lg:gap-0 gap-3  items-center relative  flex-wrap z-10'>
         <img src={logo} alt='logo ' className=' w-fit'  />
-        <Search/>
+        <Search setSearch={setSearch}/>
         <ControlHeader setShowNav={setShowNav}/>
     </div> 
   </div>

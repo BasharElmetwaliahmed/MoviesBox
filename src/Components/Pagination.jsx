@@ -43,10 +43,9 @@ function Pagination({pages,currentPage,setCurrentPage}) {
     <div className="flex gap-3 max-auto justify-center">
         { pages>1 &&
    <>
-           <button className="pagination-btn ">Prev</button>
     {paginationBtns}
-
-        <button className="pagination-btn">Next</button></>}
+       </>
+        }
     </div>
   )
 }
