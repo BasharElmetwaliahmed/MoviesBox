@@ -1,7 +1,7 @@
 /* eslint-disable react/prop-types */
 import imdbLogo from '../../assets/imgs/MV5BMTk3ODA4Mjc0NF5BMl5BcG5nXkFtZTgwNDc1MzQ2OTE@ 1.png'
 import extractYearFromDate from '../functions/extractYear'
-function ShowContent({show,type,clickHandler}) {
+function ShowContent({show,clickHandler}) {
     const year=extractYearFromDate(show.release_date ? show.release_date :show.first_air_date) 
     if(show)
   return (
@@ -12,7 +12,6 @@ function ShowContent({show,type,clickHandler}) {
             <img src={imdbLogo} alt='imdb logo'/>
             <p>{show.vote_average?show.vote_average:0}/10</p>
           </div>
-          <p className='text-gray-400 text-xs font-bold'>{show.genres?.length?show.genres.map(genre=>`${genre.name}, `):''}</p>
   </div>
   )
 }

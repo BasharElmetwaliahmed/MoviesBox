@@ -1,8 +1,9 @@
 /* eslint-disable react/prop-types */
 
 import imdbLogo from '../assets/imgs/MV5BMTk3ODA4Mjc0NF5BMl5BcG5nXkFtZTgwNDc1MzQ2OTE@ 1.png'
-import watchTrailer from '../assets/imgs/Play.svg'
+import useWatchList from '../hooks/useWatchList'
 function SlideComponent({Trending}) {
+   const {addToWatchListHandler,existOnWatchList}=useWatchList(Trending.id,Trending,'movie')
 
 
   return (
@@ -14,9 +15,8 @@ function SlideComponent({Trending}) {
 
         </div>
                     <p className=' text-sm w-[302px] '>{Trending.overview}</p>
-     <button className='uppercase bg-rose-700 flex gap-2 px-5 py-2 rounded-md w-fit'>
-       <img src={watchTrailer}/>
-        Watch trailer
+     <button className='uppercase bg-rose-700 flex gap-2 px-5 transition-all duration-300 hover:opacity-50 py-2 rounded-md w-fit' onClick={addToWatchListHandler}>
+        {!existOnWatchList?'Add To WatchList': 'Remove From WatchList'}
      </button>
     </div>
     <div className='top-0 left-0 absolute  bg-gradient-to-r z-0 from-gray-900 to-blue-950 opacity-80 backdrop-blur-lg w-full  h-full'></div>

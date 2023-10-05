@@ -6,7 +6,6 @@ import { setUser } from "../../Redux/Services/userSlice/UserSlice";
 import { setWatchList } from "../../Redux/Services/WatchListSlice/WatchListSlice";
 import { getWatchList } from "../functions/getWatchList";
 import Header from "../Header/Header"
-import Search from "../Header/Search";
 
 
 

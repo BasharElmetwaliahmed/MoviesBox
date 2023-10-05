@@ -9,10 +9,11 @@ import CollectionHeader from './CollectionHeader';
 function CollectionSection({ title, categories, data }) {
   const initialCategory = categories[0].category;
   const [category, setCategory] = useState({ position: 'left', type: initialCategory });
-  const { collection, isLoading } = useFetch(`https://api.themoviedb.org/3/${category.type}/${data}`,category);
+  const { collection, isLoading } = useFetch(`https://api.themoviedb.org/3/${category.type}/${data}?with_genres=35`,category);
+  console.log(collection)
   const slides = collection?.results
     ?.filter((element) => element.poster_path)
-    .map((element, id) => <ShowCard type={category.type} id={element.id} key={id} /> );
+    .map((element, id) => <ShowCard type={category.type} show={element} id={element.id} key={id} /> );
   return (
     <div className="container py-20 px-3">
       <CollectionHeader

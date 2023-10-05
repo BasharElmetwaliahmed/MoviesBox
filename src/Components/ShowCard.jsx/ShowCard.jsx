@@ -1,13 +1,11 @@
 /* eslint-disable react/prop-types */
 
-import useDetails from '../../hooks/useDetails';
 import { useNavigate } from "react-router-dom";
 import ShowCardHeader from './ShowCardHeader';
 import ShowContent from './ShowContent';
 
 // eslint-disable-next-line react/prop-types
-function ShowCard({id,type}) {
-    const {show}=useDetails(id,type)
+function ShowCard({id,type,show}) {
     const navigate=useNavigate()
 
    const clickHandler=()=>{
